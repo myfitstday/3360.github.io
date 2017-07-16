@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.fullPage.min.js"></script>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+<div id="my-360-intro">
+    <div class="section first">
+        <a href="javascript:;" class="logo"></a>
+        <div class="text">
+            <img src="../images/text_1.png" alt="">
+            <img src="../images/text_2.png" alt="">
+            <img src="../images/text_3.png" alt="">
+            <img src="../images/text_4.png" alt="">
+            <img src="../images/text_5.png" alt="">
+            <img src="../images/text_6.png" alt="">
+            <img src="../images/text_7.png" alt="">
+            <img src="../images/text_8.png" alt="">
+        </div>
+        <div class="info"></div>
+    </div>
+    <div class="section second">
+        <div class="shield">
+            <img src="../images/shield_1.png" alt="">
+            <img src="../images/shield_2.png" alt="">
+            <img src="../images/shield_3.png" alt="">
+            <img src="../images/shield_4.png" alt="">
+            <img src="../images/shield_5.png" alt="">
+            <img src="../images/shield_6.png" alt="">
+            <img src="../images/shield_7.png" alt="">
+            <img src="../images/shield_8.png" alt="">
+            <img src="../images/shield_9.png" alt="">
+        </div>
+        <div class="info"></div>
+
+    </div>
+    <div class="section third">
+        <div class="info"></div>
+        <div class="circle">
+            <div class="rocket"></div>
+        </div>
+    </div>
+    <div class="section fourth">
+       <div class="searchBox">
+           <div class="searchInput"></div>
+           <div class="searchText"></div>
+           <div class="searchResult"></div>
+       </div>
+        <div class="info"></div>
+    </div>
+    <div class="section fifth">
+        <h3>第5屏</h3>
+    </div>
+</div>
+<script>
+    $(function(){
+        $("#my-360-intro").fullpage({
+            sectionsColor:['#0da5d6', '#2AB561', '#DE8910', '#16BA9D', '#0DA5D6'],
+            afterLoad:function(anchorLink,index){
+                /*去除其它屏的current标记*/
+                $(".section").removeClass('current');
+                /*为当前屏添加current标记*/
+                setTimeout(function(){
+                    $(".section").eq(index-1).addClass('current');
+                },500);
+            }
+        });
+    });
+</script>
+</body>
+</html>

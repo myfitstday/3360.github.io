@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.fullPage.min.js"></script>
+    <style>
+        .first{
+
+        }
+        /*全屏插件默认会在内容的外部包裹一层新的div*/
+        /*交集选择器*/
+        .first.current  h3{
+            font-size: 50px;
+        }
+        .second.current h3{
+            font-size: 100px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="my-360-intro">
+    <div class="section first">
+        <h3>第一屏</h3>
+    </div>
+    <div class="section second">
+        <h3>第二屏</h3>
+    </div>
+    <div class="section">
+        <h3>第三屏</h3>
+    </div>
+    <div class="section">
+        <h3>第四屏</h3>
+    </div>
+    <div class="section">
+        <h3>第5屏</h3>
+    </div>
+</div>
+<script>
+    $(function(){
+        /*在fullpage可以传递任意数量的插件所支持的参数，它的类型是一个对象*/
+        $('#my-360-intro').fullpage({
+            /*sectionsColor:设置每一屏的背景色*/
+            sectionsColor:['red','blue','green','yellow','pink'],
+            /*滚动到某一屏后的回调函数，接收 anchorLink 和 index 两个参数，anchorLink 是锚链接的名称，index 是序号，从1开始计算*/
+            afterLoad:function(anchorLink,index){
+//                alert(index);
+                /*去除其它屏的current样式标记*/
+                $(".section").removeClass('current');
+                /*让我们添加的过渡或者动画效果生效:当滚动到这一屏之后，为定屏添加一个current样式标记，在这个标记下的样式才会真正的执行*/
+                setTimeout(function(){
+                    $(".section").eq(index-1).addClass('current');
+                },2000);
+            }
+        });
+    });
+</script>
+</body>
+</html>
